@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="EntryPointsManager">
+    <entry_points version="2.0">
+      <entry_point TYPE="field" FQNAME="com.i4creed.popularmovies.model.Movie CREATOR" />
+    </entry_points>
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setOverview" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setVoteAverage" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setMoviePosterUrl" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setReleaseDate" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setTitle" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" />
+    <pattern value="com.i4creed.popularmovies.MoviesAdapter" method="MoviesAdapter" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setOriginalTitle" />
+    <pattern value="com.i4creed.popularmovies.model.Movie" method="setId" />
+    <pattern value="com.i4creed.popularmovies.model.Review" method="setContent" />
+    <pattern value="com.i4creed.popularmovies.model.Review" method="setAuthor" />
+    <pattern value="com.i4creed.popularmovies.model.Review" />
+    <pattern value="com.i4creed.popularmovies.ReviewsAdapter" method="getReviews" />
+    <pattern value="com.i4creed.popularmovies.ReviewsAdapter" />
+    <pattern value="com.i4creed.popularmovies.model.Trailer" method="setKey" />
+    <pattern value="com.i4creed.popularmovies.model.Trailer" method="setName" />
+    <pattern value="com.i4creed.popularmovies.model.Trailer" />
+  </component>
+  <component name="NullableNotNullManager">
+    <option name="myDefaultNullable" value="android.support.annotation.Nullable" />
+    <option name="myDefaultNotNull" value="android.support.annotation.NonNull" />
+    <option name="myNullables">
+      <value>
+        <list size="4">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.Nullable" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nullable" />
+          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.Nullable" />
+          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.Nullable" />
+        </list>
+      </value>
+    </option>
+    <option name="myNotNulls">
+      <value>
+        <list size="4">
+          <item index="0" class="java.lang.String" itemvalue="org.jetbrains.annotations.NotNull" />
+          <item index="1" class="java.lang.String" itemvalue="javax.annotation.Nonnull" />
+          <item index="2" class="java.lang.String" itemvalue="edu.umd.cs.findbugs.annotations.NonNull" />
+          <item index="3" class="java.lang.String" itemvalue="android.support.annotation.NonNull" />
+        </list>
+      </value>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_7" project-jdk-name="1.8" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

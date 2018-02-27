@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Popular Movies</string>
+    <string name="sort_by_popularity">sort by most popular</string>
+    <string name="sort_by_top_rated">sort by highest-rated</string>
+    <string name="movie_poster">movie poster</string>
+    <string name="detail_activity_name">Movie detail</string>
+    <string name="content_description_movie_poster">Movie poster</string>
+    <string name="max_rating">/10</string>
+    <string name="failed_fetch">Failed to fetch data, please try again later.</string>
+    <string name="sort_favorites">favorites</string>
+    <string name="content_description_thumbnail">thumbnail</string>
+    <string name="content_description_favorite">favorite</string>
+</resources>
