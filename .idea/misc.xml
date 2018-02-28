@@ -21,6 +21,8 @@
     <pattern value="com.i4creed.popularmovies.model.Trailer" method="setKey" />
     <pattern value="com.i4creed.popularmovies.model.Trailer" method="setName" />
     <pattern value="com.i4creed.popularmovies.model.Trailer" />
+    <pattern value="com.i4creed.popularmovies.ui.MoviesAdapter" method="MoviesAdapter" />
+    <pattern value="com.i4creed.popularmovies.ui.ReviewsAdapter" method="getReviews" />
   </component>
   <component name="NullableNotNullManager">
     <option name="myDefaultNullable" value="android.support.annotation.Nullable" />

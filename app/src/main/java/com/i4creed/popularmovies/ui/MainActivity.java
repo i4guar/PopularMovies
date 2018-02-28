@@ -2,7 +2,6 @@ package com.i4creed.popularmovies.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.support.v4.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -30,16 +29,11 @@ import static com.i4creed.popularmovies.backgroundtasks.MovieQueryLoaderCallback
 /**
  * Created by Felix Houghton-Larsen on 20.02.2018 at 16:18.
  * MainActivity is the launch activity.
- * restoring configuration changes of layout manager
- * SOURCE:
- * https://stackoverflow.com/questions/27816217/how-to-save-recyclerviews-scroll-position-using-recyclerview-state
- * http://panavtec.me/retain-restore-recycler-view-scroll-position
  */
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.ListItemClickListener,
         AsyncTaskLoaderCompleteListener<ArrayList<Movie>> {
 
     public static final String MOVIE_PARCELABLE_KEY = "movie";
-    public static final String LAYOUT_MANAGER_PARCELABLE_KEY = "layoutManager";
     private static final int MOVIE_QUERY_LOADER = 22;
     @BindView(R.id.movies_rv)
     RecyclerView moviesRv;
