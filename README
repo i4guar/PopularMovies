@@ -1,1 +1,2 @@
-Please replace the API_KEY constant in MovieDbUtils.java with your own api key.
+Please add the API_KEY constant in your gradle.properties by adding this line:
+API_KEY="your api key"
