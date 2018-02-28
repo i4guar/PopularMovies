@@ -1,4 +1,4 @@
-package com.i4creed.popularmovies;
+package com.i4creed.popularmovies.ui;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.i4creed.popularmovies.R;
 import com.i4creed.popularmovies.model.Review;
 
 import java.util.ArrayList;

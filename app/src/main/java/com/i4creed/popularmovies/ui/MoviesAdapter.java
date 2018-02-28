@@ -1,4 +1,4 @@
-package com.i4creed.popularmovies;
+package com.i4creed.popularmovies.ui;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -9,6 +9,7 @@ import android.view.ViewGroup;
 import android.view.WindowManager;
 import android.widget.ImageView;
 
+import com.i4creed.popularmovies.R;
 import com.i4creed.popularmovies.model.Movie;
 import com.i4creed.popularmovies.utils.MovieDbUtils;
 import com.squareup.picasso.Picasso;

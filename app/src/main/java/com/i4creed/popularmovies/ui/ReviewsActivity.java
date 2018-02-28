@@ -1,4 +1,4 @@
-package com.i4creed.popularmovies;
+package com.i4creed.popularmovies.ui;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -6,6 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.widget.Toast;
 
+import com.i4creed.popularmovies.R;
 import com.i4creed.popularmovies.backgroundtasks.AsyncTaskLoaderCompleteListener;
 import com.i4creed.popularmovies.backgroundtasks.MovieQueryLoaderCallback;
 import com.i4creed.popularmovies.backgroundtasks.QueryLoaderCallback;

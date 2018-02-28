@@ -34,7 +34,7 @@ public class MovieDbUtils {
         if (display != null) {
             Point dimensions = new Point();
             display.getSize(dimensions);
-            int width = dimensions.x / 3;
+            int width = ((dimensions.x < dimensions.y) ? dimensions.x : dimensions.y) / 3;
             if (width <= 92) {
                 return "w92";
             } else if (width <= 154) {
@@ -54,4 +54,5 @@ public class MovieDbUtils {
             return "w185";
         }
     }
+
 }

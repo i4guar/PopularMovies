@@ -1,7 +1,8 @@
-package com.i4creed.popularmovies;
+package com.i4creed.popularmovies.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.support.v4.app.LoaderManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
@@ -10,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.Toast;
 
+import com.i4creed.popularmovies.R;
 import com.i4creed.popularmovies.backgroundtasks.AsyncTaskLoaderCompleteListener;
 import com.i4creed.popularmovies.backgroundtasks.MovieQueryLoaderCallback;
 import com.i4creed.popularmovies.model.Movie;
@@ -28,15 +30,22 @@ import static com.i4creed.popularmovies.backgroundtasks.MovieQueryLoaderCallback
 /**
  * Created by Felix Houghton-Larsen on 20.02.2018 at 16:18.
  * MainActivity is the launch activity.
+ * restoring configuration changes of layout manager
+ * SOURCE:
+ *  https://stackoverflow.com/questions/27816217/how-to-save-recyclerviews-scroll-position-using-recyclerview-state
+ *  http://panavtec.me/retain-restore-recycler-view-scroll-position
  */
-public class MainActivity extends AppCompatActivity implements MoviesAdapter.ListItemClickListener, AsyncTaskLoaderCompleteListener<ArrayList<Movie>> {
+public class MainActivity extends AppCompatActivity implements MoviesAdapter.ListItemClickListener,
+        AsyncTaskLoaderCompleteListener<ArrayList<Movie>> {
 
-    private static final int MOVIE_QUERY_LOADER = 22;
     public static final String MOVIE_PARCELABLE_KEY = "movie";
-
+    public static final String LAYOUT_MANAGER_PARCELABLE_KEY = "layoutManager";
+    private static final int MOVIE_QUERY_LOADER = 22;
     @BindView(R.id.movies_rv)
     RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
+
+    private Parcelable layoutManagerState;
 
 
     @Override
@@ -52,8 +61,22 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
         if (loaderManager.getLoader(MOVIE_QUERY_LOADER) == null) {
             loadData(MovieDbUtils.POPULAR_PATH);
         } else {
-            loaderManager.initLoader(MOVIE_QUERY_LOADER, null, new MovieQueryLoaderCallback(this, this));
+            loaderManager.initLoader(MOVIE_QUERY_LOADER, null,
+                    new MovieQueryLoaderCallback(this, this));
         }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putParcelable(LAYOUT_MANAGER_PARCELABLE_KEY,
+                moviesRv.getLayoutManager().onSaveInstanceState());
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        layoutManagerState = savedInstanceState.getParcelable(LAYOUT_MANAGER_PARCELABLE_KEY);
     }
 
     @Override
@@ -86,7 +109,8 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
     private void loadFavorites() {
         Bundle queryBundle = new Bundle();
         queryBundle.putBoolean(CONTENT_PROVIDER_EXTRA, true);
-        getSupportLoaderManager().restartLoader(MOVIE_QUERY_LOADER, queryBundle, new MovieQueryLoaderCallback(this, this));
+        getSupportLoaderManager().restartLoader(MOVIE_QUERY_LOADER, queryBundle,
+                new MovieQueryLoaderCallback(this, this));
     }
 
 
@@ -105,7 +129,8 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
         Bundle queryBundle = new Bundle();
         queryBundle.putString(URL_EXTRA, url != null ? url.toString() : null);
 
-        getSupportLoaderManager().restartLoader(MOVIE_QUERY_LOADER, queryBundle, new MovieQueryLoaderCallback(this, this));
+        getSupportLoaderManager().restartLoader(MOVIE_QUERY_LOADER, queryBundle,
+                new MovieQueryLoaderCallback(this, this));
     }
 
     @Override
@@ -119,8 +144,10 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
     public void onTaskComplete(ArrayList<Movie> result) {
         if (result != null) {
             moviesAdapter.setMoviesList(result);
+            moviesRv.getLayoutManager().onRestoreInstanceState(layoutManagerState);
         } else {
-            Toast.makeText(MainActivity.this, R.string.failed_fetch, Toast.LENGTH_LONG).show();
+            Toast.makeText(MainActivity.this,
+                    R.string.failed_fetch, Toast.LENGTH_LONG).show();
         }
     }
 }

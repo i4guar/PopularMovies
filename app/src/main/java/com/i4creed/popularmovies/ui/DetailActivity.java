@@ -1,4 +1,4 @@
-package com.i4creed.popularmovies;
+package com.i4creed.popularmovies.ui;
 
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.i4creed.popularmovies.R;
 import com.i4creed.popularmovies.backgroundtasks.AsyncTaskLoaderCompleteListener;
 import com.i4creed.popularmovies.backgroundtasks.MovieQueryLoaderCallback;
 import com.i4creed.popularmovies.backgroundtasks.QueryLoaderCallback;
