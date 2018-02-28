@@ -32,8 +32,8 @@ import static com.i4creed.popularmovies.backgroundtasks.MovieQueryLoaderCallback
  * MainActivity is the launch activity.
  * restoring configuration changes of layout manager
  * SOURCE:
- *  https://stackoverflow.com/questions/27816217/how-to-save-recyclerviews-scroll-position-using-recyclerview-state
- *  http://panavtec.me/retain-restore-recycler-view-scroll-position
+ * https://stackoverflow.com/questions/27816217/how-to-save-recyclerviews-scroll-position-using-recyclerview-state
+ * http://panavtec.me/retain-restore-recycler-view-scroll-position
  */
 public class MainActivity extends AppCompatActivity implements MoviesAdapter.ListItemClickListener,
         AsyncTaskLoaderCompleteListener<ArrayList<Movie>> {
@@ -44,8 +44,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
     @BindView(R.id.movies_rv)
     RecyclerView moviesRv;
     private MoviesAdapter moviesAdapter;
-
-    private Parcelable layoutManagerState;
 
 
     @Override
@@ -64,19 +62,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
             loaderManager.initLoader(MOVIE_QUERY_LOADER, null,
                     new MovieQueryLoaderCallback(this, this));
         }
-    }
-
-    @Override
-    protected void onSaveInstanceState(Bundle outState) {
-        super.onSaveInstanceState(outState);
-        outState.putParcelable(LAYOUT_MANAGER_PARCELABLE_KEY,
-                moviesRv.getLayoutManager().onSaveInstanceState());
-    }
-
-    @Override
-    protected void onRestoreInstanceState(Bundle savedInstanceState) {
-        super.onRestoreInstanceState(savedInstanceState);
-        layoutManagerState = savedInstanceState.getParcelable(LAYOUT_MANAGER_PARCELABLE_KEY);
     }
 
     @Override
@@ -144,7 +129,6 @@ public class MainActivity extends AppCompatActivity implements MoviesAdapter.Lis
     public void onTaskComplete(ArrayList<Movie> result) {
         if (result != null) {
             moviesAdapter.setMoviesList(result);
-            moviesRv.getLayoutManager().onRestoreInstanceState(layoutManagerState);
         } else {
             Toast.makeText(MainActivity.this,
                     R.string.failed_fetch, Toast.LENGTH_LONG).show();
