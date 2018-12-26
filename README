@@ -1,2 +1,8 @@
+= Popular Movies
+
+In this project, you will add to the app you built in Stage 1 by building on the detail view for each movie, allowing users to 'favorite' movies, and adding a tablet layout.
+
 Please add the API_KEY constant in your gradle.properties by adding this line:
 API_KEY="your api key"
+
+This app is build for the Android Developer Nanodegree from Udacity.
